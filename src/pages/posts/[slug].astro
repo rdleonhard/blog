@@ -24,8 +24,8 @@ const formatDate = (date: Date) =>
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="post">
     <header class="post-hero">
-      <a class="back-link" href="../">All posts</a>
-      <p class="eyebrow">Essay</p>
+      <a class="back-link" href="../">Signal archive</a>
+      <p class="eyebrow">Transmission</p>
       <h1>{post.data.title}</h1>
       <p>{post.data.description}</p>
       <div class="post-meta">
@@ -68,7 +68,7 @@ const formatDate = (date: Date) =>
   }
 
   .back-link::before {
-    content: "←";
+    content: "<";
     margin-right: 8px;
   }
 

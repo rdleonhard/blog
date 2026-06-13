@@ -1,26 +1,27 @@
 ---
-title: "The Case for Looking Up"
-description: "A short note on noticing the ordinary details that make a place feel alive."
+title: "The Sky Above the Interface"
+description: "A note on looking up from the feed while the machines learn to look back."
 publishDate: 2026-06-13
 tags:
-  - observation
+  - ai-transition
   - city
+  - attention
 ---
 
-I have been trying to look up more often.
+I have been trying to look up more often, which is harder than it sounds when every device in the
+room is optimized to pull the eyes downward.
 
-That sounds like the sort of advice printed on a card beside a hotel candle, but the practice is
-less sentimental than it seems. Most of the city lives above the height of habit: cornices, fire
-escapes, window plants, sun hitting old brick, and the occasional apartment lamp left on in the
-afternoon.
+The strange thing about living through the AI transition is how ordinary it feels most days. The
+future does not arrive as a chrome monolith descending through the clouds. It arrives as a better
+autocomplete, a synthetic voice on hold music, a search result that answers before you finish asking.
 
-The street gives you errands. The second and third floors give you evidence that people have been
-making private worlds inside public architecture for a very long time.
+Meanwhile, above the street, the old city is still doing old city things: fire escapes, window
+plants, brick warmed by afternoon light, a lamp left on in an apartment where someone is not thinking
+about model weights at all.
 
-## A Small Adjustment
+## A Small Resistance
 
-Looking up does not require a grand transformation. It only asks for a pause at the corner before
-the light changes. A glance above the storefront. A willingness to let the day be interrupted by
-something that was already there.
+Looking up is not a cure for the machine age. It is only a way to remember that attention has a
+body. It can be pointed somewhere else. It can refuse, briefly, to become telemetry.
 
-Attention is not an escape from ordinary life. It is one of the better ways back into it.
+The sky above the interface is still there. That feels worth recording.

@@ -24,7 +24,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="author" content={SITE.author} />
-    <meta name="theme-color" content="#f7f2ea" />
+    <meta name="theme-color" content="#070812" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="application/rss+xml" title={`${SITE.title} RSS`} href={rssUrl} />
     <title>{pageTitle}</title>
@@ -37,8 +37,8 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
   <body>
     <header class="site-header">
       <a class="brand" href={basePath}>
-        <span class="brand-mark">RL</span>
-        <span>A blog that isn't law related</span>
+        <span class="brand-mark">PS</span>
+        <span>{SITE.title}</span>
       </a>
       <nav aria-label="Primary navigation">
         <a href={basePath}>Home</a>
@@ -53,7 +53,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     </main>
 
     <footer class="site-footer">
-      <p>Written for curiosity, built with care, and published on GitHub Pages.</p>
+      <p>{SITE.signal} Published as static files before everything becomes a stream.</p>
       <div class="footer-links">
         <a href={`${basePath}rss.xml`}>RSS</a>
         <a href={`${basePath}sitemap.xml`}>Sitemap</a>
@@ -65,17 +65,19 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
 
 <style is:global>
   :root {
-    color-scheme: light;
-    --bg: #f7f2ea;
-    --bg-elevated: #fffaf1;
-    --ink: #1d1a16;
-    --muted: #6f6559;
-    --line: #ded2c3;
-    --accent: #9f4f2f;
-    --accent-dark: #6f321f;
-    --shadow: 0 24px 80px rgba(57, 39, 25, 0.13);
+    color-scheme: dark;
+    --bg: #070812;
+    --bg-elevated: #101322;
+    --ink: #edf7ff;
+    --muted: #94a3b8;
+    --line: rgba(125, 249, 255, 0.2);
+    --accent: #7df9ff;
+    --accent-dark: #ff4fd8;
+    --warning: #f8f871;
+    --shadow: 0 24px 90px rgba(0, 0, 0, 0.42);
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
     --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   }
 
   * {
@@ -92,27 +94,47 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     min-height: 100vh;
     color: var(--ink);
     background:
-      radial-gradient(circle at top left, rgba(159, 79, 47, 0.16), transparent 34rem),
-      linear-gradient(135deg, rgba(255, 250, 241, 0.92), rgba(247, 242, 234, 0.96));
+      linear-gradient(rgba(125, 249, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125, 249, 255, 0.035) 1px, transparent 1px),
+      radial-gradient(circle at 18% 10%, rgba(255, 79, 216, 0.2), transparent 30rem),
+      radial-gradient(circle at 82% 18%, rgba(125, 249, 255, 0.16), transparent 28rem),
+      linear-gradient(135deg, #070812 0%, #101322 52%, #070812 100%);
+    background-size:
+      48px 48px,
+      48px 48px,
+      auto,
+      auto,
+      auto;
     font-family: var(--sans);
     line-height: 1.6;
     text-rendering: optimizeLegibility;
   }
 
+  body::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(rgba(237, 247, 255, 0.04) 50%, rgba(7, 8, 18, 0.08) 50%);
+    background-size: 100% 4px;
+    mix-blend-mode: screen;
+  }
+
   a {
     color: inherit;
-    text-decoration-color: rgba(159, 79, 47, 0.35);
+    text-decoration-color: rgba(125, 249, 255, 0.45);
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.18em;
   }
 
   a:hover {
-    color: var(--accent-dark);
+    color: var(--accent);
     text-decoration-color: currentColor;
   }
 
   a:focus-visible {
-    outline: 3px solid rgba(159, 79, 47, 0.35);
+    outline: 3px solid rgba(125, 249, 255, 0.42);
     outline-offset: 4px;
     border-radius: 6px;
   }
@@ -158,11 +180,13 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     width: 42px;
     height: 42px;
     place-items: center;
-    border: 1px solid var(--ink);
-    border-radius: 50%;
-    font-family: var(--serif);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    color: var(--accent);
+    font-family: var(--mono);
     font-size: 0.9rem;
     letter-spacing: 0.04em;
+    box-shadow: 0 0 28px rgba(125, 249, 255, 0.25);
   }
 
   nav {
@@ -184,6 +208,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     justify-content: space-between;
     gap: 20px;
     padding: 64px 0 40px;
+    border-top: 1px solid var(--line);
     color: var(--muted);
     font-size: 0.95rem;
   }
@@ -208,6 +233,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.18em;
+    font-family: var(--mono);
     text-transform: uppercase;
   }
 
@@ -220,7 +246,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     border: 1px solid var(--ink);
     border-radius: 999px;
     background: var(--ink);
-    color: var(--bg-elevated);
+    color: var(--bg);
     font-weight: 750;
     text-decoration: none;
     transition:
@@ -231,9 +257,9 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
 
   .button:hover {
     transform: translateY(-2px);
-    background: var(--accent-dark);
-    color: var(--bg-elevated);
-    box-shadow: 0 12px 28px rgba(57, 39, 25, 0.18);
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 28px rgba(125, 249, 255, 0.34);
   }
 
   .button.secondary {
@@ -242,8 +268,8 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
   }
 
   .button.secondary:hover {
-    background: rgba(255, 250, 241, 0.7);
-    color: var(--accent-dark);
+    background: rgba(125, 249, 255, 0.1);
+    color: var(--accent);
   }
 
   .post-card {
@@ -252,8 +278,8 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     padding: 28px;
     border: 1px solid var(--line);
     border-radius: 28px;
-    background: rgba(255, 250, 241, 0.72);
-    box-shadow: 0 16px 48px rgba(57, 39, 25, 0.06);
+    background: rgba(16, 19, 34, 0.76);
+    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.22);
     text-decoration: none;
     transition:
       transform 160ms ease,
@@ -263,7 +289,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
 
   .post-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(159, 79, 47, 0.45);
+    border-color: rgba(125, 249, 255, 0.48);
     box-shadow: var(--shadow);
     color: var(--ink);
   }
@@ -293,11 +319,11 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
   }
 
   .tag {
-    border: 1px solid rgba(159, 79, 47, 0.24);
+    border: 1px solid rgba(125, 249, 255, 0.32);
     border-radius: 999px;
     padding: 4px 10px;
-    color: var(--accent-dark);
-    background: rgba(159, 79, 47, 0.08);
+    color: var(--accent);
+    background: rgba(125, 249, 255, 0.08);
     font-size: 0.78rem;
     font-weight: 750;
     letter-spacing: 0.04em;
@@ -334,7 +360,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
   }
 
   .prose a {
-    color: var(--accent-dark);
+    color: var(--accent);
     font-weight: 650;
   }
 
@@ -349,8 +375,8 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
   .prose blockquote {
     margin: 2rem 0;
     padding-left: 1.4rem;
-    border-left: 3px solid var(--accent);
-    color: var(--accent-dark);
+    border-left: 3px solid var(--accent-dark);
+    color: var(--ink);
     font-style: italic;
   }
 

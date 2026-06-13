@@ -1,7 +1,7 @@
-# A Blog That Isn't Law Related
+# Pre-Singularity Dispatches
 
-A polished static blog for personal essays, notes, and observations. It is built with Astro and
-deployed to GitHub Pages.
+A personal cyberpunk blog for notes from inside the AI transition. It is built with Astro and
+deployed to GitHub Pages as a static archive of pre-singularity thoughts.
 
 ## Local Development
 
@@ -35,15 +35,15 @@ Posts live in `src/content/posts/` as Markdown or MDX files. To publish:
 
 ```md
 ---
-title: "My New Essay"
-description: "A short summary for the homepage, archive, and metadata."
+title: "My New Transmission"
+description: "A short signal summary for the homepage, archive, and metadata."
 publishDate: 2026-06-13
 tags:
-  - essay
-  - notes
+  - transmission
+  - ai-transition
 ---
 
-Write the post here.
+Write the transmission here.
 ```
 
 4. Commit the change to `main`.
@@ -54,7 +54,7 @@ Drafts can be kept out of production by adding `draft: true` to the post frontma
 You can also generate a draft post from the command line:
 
 ```sh
-npm run new:post -- "My New Essay"
+npm run new:post -- "My New Transmission"
 ```
 
 The generated file starts with `draft: true`; remove that line or set it to `false` when the post is

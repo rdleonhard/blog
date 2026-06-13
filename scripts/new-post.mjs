@@ -28,14 +28,14 @@ writeFileSync(
   postPath,
   `---
 title: "${title.replaceAll('"', '\\"')}"
-description: "Add a clear one-sentence summary."
+description: "Add a clear one-sentence signal summary."
 publishDate: ${publishDate}
 tags:
-  - notes
+  - transmission
 draft: true
 ---
 
-Start writing here.
+Start transmitting here.
 `,
 );
 

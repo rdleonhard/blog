@@ -21,22 +21,22 @@ const formatDate = (date: Date) =>
 <BaseLayout>
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">Personal dispatches</p>
-      <h1>Notes from a life with room for curiosity.</h1>
+      <p class="eyebrow">Pre-singularity log</p>
+      <h1>Human notes from the machine threshold.</h1>
       <p>
-        A refined home for essays, observations, and digressions that are intentionally not about work,
-        but still made with the same care clients notice.
+        Personal reflections from someone living through the AI transition: part journal, part field
+        recording, part neon-lit archive of what still feels human.
       </p>
       <div class="hero-actions">
-        <a class="button" href={`${basePath}posts/`}>Read the latest</a>
+        <a class="button" href={`${basePath}posts/`}>Read the signal</a>
         <a class="button secondary" href={SITE.repo}>View the source</a>
       </div>
     </div>
     <aside class="hero-panel" aria-label="About this blog">
-      <p class="eyebrow">Editor's note</p>
+      <p class="eyebrow">Transmission</p>
       <p>
-        This site is built as a static publication: fast, portable, and quietly polished. New writing is
-        published through GitHub and delivered by GitHub Pages.
+        Not a tech blog. Not a portfolio. A personal record from the years when the interface between
+        human intention and machine intelligence started to glow.
       </p>
     </aside>
   </section>
@@ -45,13 +45,13 @@ const formatDate = (date: Date) =>
     featuredPost && (
       <section class="featured" aria-labelledby="featured-title">
         <div>
-          <p class="eyebrow">Featured essay</p>
+          <p class="eyebrow">Primary signal</p>
           <h2 id="featured-title">{featuredPost.data.title}</h2>
           <p>{featuredPost.data.description}</p>
         </div>
         <a class="post-card featured-card" href={`${basePath}posts/${featuredPost.id}/`}>
           <span class="post-meta">{formatDate(featuredPost.data.publishDate)}</span>
-          <span class="read-link">Read essay</span>
+          <span class="read-link">Open transmission</span>
         </a>
       </section>
     )
@@ -59,8 +59,8 @@ const formatDate = (date: Date) =>
 
   <section class="post-grid" aria-labelledby="recent-title">
     <div class="section-heading">
-      <p class="eyebrow">Recent writing</p>
-      <h2 id="recent-title">A few pieces to begin with.</h2>
+      <p class="eyebrow">Recent transmissions</p>
+      <h2 id="recent-title">Dispatches before the curve goes vertical.</h2>
     </div>
     <div class="cards">
       {
@@ -81,12 +81,12 @@ const formatDate = (date: Date) =>
   </section>
 
   <section class="craft-notes" aria-labelledby="craft-title">
-    <p class="eyebrow">Built to last</p>
-    <h2 id="craft-title">Static, fast, and easy to keep publishing.</h2>
+    <p class="eyebrow">Signal architecture</p>
+    <h2 id="craft-title">Static pages for unstable times.</h2>
     <div class="craft-grid">
-      <p>Posts are plain Markdown files, so the writing stays portable and versioned.</p>
-      <p>GitHub Actions publishes the site to Pages after each push to `main`.</p>
-      <p>RSS, sitemap, and robots metadata make the site easier to follow and discover.</p>
+      <p>Plain Markdown keeps the record portable while platforms mutate around it.</p>
+      <p>GitHub Actions turns each commit into a fresh public transmission.</p>
+      <p>RSS, sitemap, and robots metadata keep the signal discoverable outside the feed.</p>
     </div>
   </section>
 </BaseLayout>
@@ -129,7 +129,9 @@ const formatDate = (date: Date) =>
     padding: 30px;
     border: 1px solid var(--line);
     border-radius: 32px;
-    background: rgba(255, 250, 241, 0.76);
+    background:
+      linear-gradient(135deg, rgba(125, 249, 255, 0.1), rgba(255, 79, 216, 0.08)),
+      rgba(16, 19, 34, 0.78);
     box-shadow: var(--shadow);
   }
 
@@ -193,7 +195,7 @@ const formatDate = (date: Date) =>
     padding: 34px;
     border: 1px solid var(--line);
     border-radius: 32px;
-    background: rgba(29, 26, 22, 0.04);
+    background: rgba(16, 19, 34, 0.72);
   }
 
   .craft-notes h2 {
