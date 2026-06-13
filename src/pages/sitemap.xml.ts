@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content";
+import { basePath, sitePath } from "../lib/paths";
 import { SITE } from "../lib/site";
 
 const escapeXml = (value: string) =>
@@ -15,9 +16,8 @@ export async function GET({ site }: { site: URL }) {
   );
 
   const siteUrl = site ?? new URL(SITE.url);
-  const basePath = import.meta.env.BASE_URL;
   const staticPages = [basePath, `${basePath}posts/`];
-  const postPages = posts.map((post) => `${basePath}posts/${post.id}/`);
+  const postPages = posts.map((post) => sitePath(`posts/${post.id}/`));
 
   const urls = [...staticPages, ...postPages]
     .map((path) => {

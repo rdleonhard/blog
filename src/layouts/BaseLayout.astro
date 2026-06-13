@@ -1,5 +1,6 @@
 ---
 import { SITE } from "../lib/site";
+import { basePath, sitePath } from "../lib/paths";
 
 interface Props {
   title?: string;
@@ -13,8 +14,7 @@ const {
 
 const pageTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const basePath = import.meta.env.BASE_URL;
-const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
+const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
 ---
 
 <!doctype html>
@@ -45,8 +45,8 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
       </a>
       <nav aria-label="Primary navigation">
         <a href={basePath}>Home</a>
-        <a href={`${basePath}posts/`}>Posts</a>
-        <a href={`${basePath}rss.xml`}>RSS</a>
+        <a href={sitePath("posts/")}>Posts</a>
+        <a href={sitePath("rss.xml")}>RSS</a>
         <a href={SITE.repo}>Source</a>
       </nav>
     </header>
@@ -58,8 +58,8 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     <footer class="site-footer">
       <p>{SITE.signal} Written by {SITE.author} and published as static files before everything becomes a stream.</p>
       <div class="footer-links">
-        <a href={`${basePath}rss.xml`}>RSS</a>
-        <a href={`${basePath}sitemap.xml`}>Sitemap</a>
+        <a href={sitePath("rss.xml")}>RSS</a>
+        <a href={sitePath("sitemap.xml")}>Sitemap</a>
         <a href={SITE.repo}>Source</a>
       </div>
     </footer>

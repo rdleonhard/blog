@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { sitePath } from "../lib/paths";
 import { SITE } from "../lib/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -9,7 +10,6 @@ const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
 
 const featuredPost = posts[0];
 const remainingPosts = posts.slice(1, 4);
-const basePath = import.meta.env.BASE_URL;
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat("en", {
     month: "long",
@@ -29,7 +29,7 @@ const formatDate = (date: Date) =>
       </p>
       <p class="hero-author">Written by {SITE.author}</p>
       <div class="hero-actions">
-        <a class="button" href={`${basePath}posts/`}>Read the signal</a>
+        <a class="button" href={sitePath("posts/")}>Read the signal</a>
         <a class="button secondary" href={SITE.repo}>View the source</a>
       </div>
     </div>
@@ -50,7 +50,7 @@ const formatDate = (date: Date) =>
           <h2 id="featured-title">{featuredPost.data.title}</h2>
           <p>{featuredPost.data.description}</p>
         </div>
-        <a class="post-card featured-card" href={`${basePath}posts/${featuredPost.id}/`}>
+        <a class="post-card featured-card" href={sitePath(`posts/${featuredPost.id}/`)}>
           <span class="post-meta">{formatDate(featuredPost.data.publishDate)}</span>
           <span class="read-link">Open transmission</span>
         </a>
@@ -66,7 +66,7 @@ const formatDate = (date: Date) =>
     <div class="cards">
       {
         remainingPosts.map((post) => (
-          <a class="post-card" href={`${basePath}posts/${post.id}/`}>
+          <a class="post-card" href={sitePath(`posts/${post.id}/`)}>
             <span class="post-meta">{formatDate(post.data.publishDate)}</span>
             <h3>{post.data.title}</h3>
             <p>{post.data.description}</p>
