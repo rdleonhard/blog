@@ -1,0 +1,90 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="post">
+    <header class="post-hero">
+      <a class="back-link" href="../">All posts</a>
+      <p class="eyebrow">Essay</p>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+      <div class="post-meta">
+        <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
+        {
+          post.data.updatedDate && (
+            <span>Updated {formatDate(post.data.updatedDate)}</span>
+          )
+        }
+      </div>
+      <div class="tag-list">
+        {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding-bottom: 32px;
+  }
+
+  .post-hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: clamp(56px, 8vw, 104px) 0 48px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 36px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .back-link::before {
+    content: "←";
+    margin-right: 8px;
+  }
+
+  .post-hero h1 {
+    margin: 12px 0 20px;
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 8vw, 7.8rem);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.07em;
+  }
+
+  .post-hero > p:not(.eyebrow) {
+    max-width: 720px;
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: clamp(1.12rem, 2vw, 1.35rem);
+  }
+</style>

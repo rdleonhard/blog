@@ -1,0 +1,377 @@
+---
+import { SITE } from "../lib/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+} = Astro.props;
+
+const pageTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const basePath = import.meta.env.BASE_URL;
+const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <meta name="theme-color" content="#f7f2ea" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.title} RSS`} href={rssUrl} />
+    <title>{pageTitle}</title>
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href={basePath}>
+        <span class="brand-mark">RL</span>
+        <span>A blog that isn't law related</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href={basePath}>Home</a>
+        <a href={`${basePath}posts/`}>Posts</a>
+        <a href={`${basePath}rss.xml`}>RSS</a>
+        <a href={SITE.repo}>Source</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <p>Written for curiosity, built with care, and published on GitHub Pages.</p>
+      <div class="footer-links">
+        <a href={`${basePath}rss.xml`}>RSS</a>
+        <a href={`${basePath}sitemap.xml`}>Sitemap</a>
+        <a href={SITE.repo}>Source</a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --bg: #f7f2ea;
+    --bg-elevated: #fffaf1;
+    --ink: #1d1a16;
+    --muted: #6f6559;
+    --line: #ded2c3;
+    --accent: #9f4f2f;
+    --accent-dark: #6f321f;
+    --shadow: 0 24px 80px rgba(57, 39, 25, 0.13);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--bg);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(159, 79, 47, 0.16), transparent 34rem),
+      linear-gradient(135deg, rgba(255, 250, 241, 0.92), rgba(247, 242, 234, 0.96));
+    font-family: var(--sans);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-color: rgba(159, 79, 47, 0.35);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover {
+    color: var(--accent-dark);
+    text-decoration-color: currentColor;
+  }
+
+  a:focus-visible {
+    outline: 3px solid rgba(159, 79, 47, 0.35);
+    outline-offset: 4px;
+    border-radius: 6px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  main {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .site-header,
+  .site-footer {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 28px 0;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .brand-mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 650;
+  }
+
+  nav a {
+    text-decoration: none;
+  }
+
+  .site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 64px 0 40px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-weight: 700;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 20px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg-elevated);
+    font-weight: 750;
+    text-decoration: none;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      background 160ms ease;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+    background: var(--accent-dark);
+    color: var(--bg-elevated);
+    box-shadow: 0 12px 28px rgba(57, 39, 25, 0.18);
+  }
+
+  .button.secondary {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .button.secondary:hover {
+    background: rgba(255, 250, 241, 0.7);
+    color: var(--accent-dark);
+  }
+
+  .post-card {
+    display: grid;
+    gap: 16px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: rgba(255, 250, 241, 0.72);
+    box-shadow: 0 16px 48px rgba(57, 39, 25, 0.06);
+    text-decoration: none;
+    transition:
+      transform 160ms ease,
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(159, 79, 47, 0.45);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+  }
+
+  .post-card h2,
+  .post-card h3 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2vw, 2.15rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+
+  .post-card p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .post-meta,
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
+  .tag {
+    border: 1px solid rgba(159, 79, 47, 0.24);
+    border-radius: 999px;
+    padding: 4px 10px;
+    color: var(--accent-dark);
+    background: rgba(159, 79, 47, 0.08);
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .prose {
+    max-width: 740px;
+    margin: 0 auto;
+    font-family: var(--serif);
+    font-size: clamp(1.13rem, 1.8vw, 1.28rem);
+    line-height: 1.78;
+  }
+
+  .prose :where(h2, h3) {
+    margin-top: 2.1em;
+    margin-bottom: 0.45em;
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  .prose h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  }
+
+  .prose h3 {
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+  }
+
+  .prose p {
+    margin: 1.15em 0;
+  }
+
+  .prose a {
+    color: var(--accent-dark);
+    font-weight: 650;
+  }
+
+  .prose :where(ul, ol) {
+    padding-left: 1.35rem;
+  }
+
+  .prose li + li {
+    margin-top: 0.35rem;
+  }
+
+  .prose blockquote {
+    margin: 2rem 0;
+    padding-left: 1.4rem;
+    border-left: 3px solid var(--accent);
+    color: var(--accent-dark);
+    font-style: italic;
+  }
+
+  @media (max-width: 720px) {
+    .site-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .site-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    nav {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 0.75rem;
+    }
+  }
+</style>
