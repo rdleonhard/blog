@@ -1,7 +1,7 @@
 # Pre-Singularity Dispatches
 
-A personal cyberpunk blog for notes from inside the AI transition. It is built with Astro and
-deployed to GitHub Pages as a static archive of pre-singularity thoughts.
+A personal cyberpunk blog by Robert Leonhard for notes from inside the AI transition. It is built
+with Astro and deployed to GitHub Pages as a static archive of pre-singularity thoughts.
 
 ## Local Development
 
@@ -66,3 +66,18 @@ This site is configured for the `rdleonhard/blog` repository and deploys under t
 path. In GitHub, set Pages to use **GitHub Actions** as the source.
 
 The site also publishes `rss.xml`, `sitemap.xml`, and `robots.txt` for feed readers and crawlers.
+
+### Deployment Setup
+
+Use the GitHub Actions deployment path, not `main/root` or `main/docs`.
+
+1. Push these files to the `main` branch.
+2. In GitHub, open the repository and go to **Settings > Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Open the **Actions** tab and run or wait for **Deploy to GitHub Pages**.
+5. After it succeeds, the site should be available at `https://rdleonhard.github.io/blog/`.
+
+The `main/root` and `main/docs` options serve committed files directly. This project is an Astro
+site, so GitHub must run `npm run build` and publish the generated `dist/` artifact instead. If the
+page looks unstyled, unbuilt, or like raw source files, Pages is probably still set to deploy from a
+branch instead of GitHub Actions.

@@ -38,7 +38,10 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     <header class="site-header">
       <a class="brand" href={basePath}>
         <span class="brand-mark">PS</span>
-        <span>{SITE.title}</span>
+        <span class="brand-copy">
+          <span>{SITE.title}</span>
+          <span>by {SITE.author}</span>
+        </span>
       </a>
       <nav aria-label="Primary navigation">
         <a href={basePath}>Home</a>
@@ -53,7 +56,7 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     </main>
 
     <footer class="site-footer">
-      <p>{SITE.signal} Published as static files before everything becomes a stream.</p>
+      <p>{SITE.signal} Written by {SITE.author} and published as static files before everything becomes a stream.</p>
       <div class="footer-links">
         <a href={`${basePath}rss.xml`}>RSS</a>
         <a href={`${basePath}sitemap.xml`}>Sitemap</a>
@@ -173,6 +176,19 @@ const rssUrl = new URL(`${basePath}rss.xml`, Astro.site);
     letter-spacing: 0.08em;
     text-decoration: none;
     text-transform: uppercase;
+  }
+
+  .brand-copy {
+    display: grid;
+    gap: 2px;
+  }
+
+  .brand-copy span:last-child {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
   }
 
   .brand-mark {
