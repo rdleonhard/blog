@@ -1,7 +1,7 @@
 ---
 title: "Warning Colors"
 description: "Marketing yourself as a threat."
-publishDate: 2026-06-13
+publishDate: 2026-06-20
 tags:
   - game theory
   - signal theory
