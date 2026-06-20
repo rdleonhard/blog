@@ -1,6 +1,6 @@
 ---
 title: "Technology steals your soul"
-description: "A short signal summary for the homepage, archive, and metadata."
+description: "Can and should AI steal your soul?"
 publishDate: 2026-06-19
 tags:
   - transmission
