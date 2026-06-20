@@ -8,6 +8,8 @@ tags:
   - attention
 ---
 
+***Rob's note: I didn't actually write this post, cursor put it in as an example, but I kind of like it. So it stays for now.***
+
 I have been trying to look up more often, which is harder than it sounds when every device in the
 room is optimized to pull the eyes downward.
 
