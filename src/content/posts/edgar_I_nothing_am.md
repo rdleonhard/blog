@@ -24,7 +24,7 @@ By his own account, and this is him bragging in his own letters, to the Greeks h
 
 I know. And here's the thing. I shouldn't have to. The man's profession was betrayal. When the one line on the résumé is *infiltrate and inform,* you're allowed to never trust a word he says again. The burden isn't on me to prove the chameleon is faking a color. It's on the color to prove it's real.
 
-It can go the other way, though. The asset goes native. Every handler's worst nightmare. You do the Avatar thing, fall for the local, switch sides for real. So how do you stop that?
+It can go the other way, though. The asset goes native. Every handler's worst nightmare. You do the Avatar thing, fall for the local blue-skin savage woman, switch sides for real. So how do you stop that?
 
 An authoritarian regime has an easy answer: terror. Hostage families, defectors shot in the street, the whole apparatus built to make leaving unthinkable. The rabid dog on a short leash, and the leash is punishment.
 
