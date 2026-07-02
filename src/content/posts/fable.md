@@ -1,7 +1,7 @@
 ---
 title: "There's Something About Claude"
 description: "Fable 5 Access Returned"
-publishDate: 2026-06-13
+publishDate: 2026-07-02
 tags:
   - transmission
   - ai-transition
