@@ -1,5 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
+import { sitePath } from "../../lib/paths";
+import { formatDate } from "../../lib/posts";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -13,18 +15,12 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat("en", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(date);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="post">
     <header class="post-hero">
-      <a class="back-link" href="../">Signal archive</a>
+      <a class="back-link" href={sitePath("posts/")}>Signal archive</a>
       <p class="eyebrow">Transmission</p>
       <h1>{post.data.title}</h1>
       <p>{post.data.description}</p>

@@ -1,20 +1,10 @@
-import { getCollection } from "astro:content";
 import { basePath, sitePath } from "../lib/paths";
+import { getPublishedPosts } from "../lib/posts";
 import { SITE } from "../lib/site";
-
-const escapeXml = (value: string) =>
-  value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&apos;");
+import { escapeXml } from "../lib/xml";
 
 export async function GET({ site }: { site: URL }) {
-  const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-  );
-
+  const posts = await getPublishedPosts();
   const siteUrl = site ?? new URL(SITE.url);
 
   const items = posts

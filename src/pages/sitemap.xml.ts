@@ -1,39 +1,41 @@
-import { getCollection } from "astro:content";
 import { basePath, sitePath } from "../lib/paths";
+import { getPublishedPosts } from "../lib/posts";
 import { SITE } from "../lib/site";
-
-const escapeXml = (value: string) =>
-  value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&apos;");
+import { escapeXml } from "../lib/xml";
 
 export async function GET({ site }: { site: URL }) {
-  const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-  );
-
+  const posts = await getPublishedPosts();
   const siteUrl = site ?? new URL(SITE.url);
   const staticPages = [basePath, `${basePath}posts/`];
-  const postPages = posts.map((post) => sitePath(`posts/${post.id}/`));
+  const postPages = posts.map((post) => ({
+    path: sitePath(`posts/${post.id}/`),
+    lastmod: (post.data.updatedDate ?? post.data.publishDate).toISOString().slice(0, 10),
+  }));
 
-  const urls = [...staticPages, ...postPages]
-    .map((path) => {
-      const loc = new URL(path, siteUrl).toString();
-
-      return `
+  const staticUrls = staticPages
+    .map(
+      (path) => `
         <url>
-          <loc>${escapeXml(loc)}</loc>
-        </url>`;
-    })
+          <loc>${escapeXml(new URL(path, siteUrl).toString())}</loc>
+        </url>`,
+    )
+    .join("");
+
+  const postUrls = postPages
+    .map(
+      ({ path, lastmod }) => `
+        <url>
+          <loc>${escapeXml(new URL(path, siteUrl).toString())}</loc>
+          <lastmod>${lastmod}</lastmod>
+        </url>`,
+    )
     .join("");
 
   return new Response(
     `<?xml version="1.0" encoding="UTF-8" ?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        ${urls}
+        ${staticUrls}
+        ${postUrls}
       </urlset>`,
     {
       headers: {

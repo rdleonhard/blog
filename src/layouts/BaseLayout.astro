@@ -15,6 +15,10 @@ const {
 const pageTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
+const postsPath = sitePath("posts/");
+const pathname = Astro.url.pathname;
+const isHome = pathname === basePath || pathname === basePath.replace(/\/$/, "");
+const isPosts = pathname === postsPath || pathname.startsWith(postsPath);
 ---
 
 <!doctype html>
@@ -28,13 +32,18 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="application/rss+xml" title={`${SITE.title} RSS`} href={rssUrl} />
     <title>{pageTitle}</title>
+    <meta property="og:site_name" content={SITE.title} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <a class="brand" href={basePath}>
         <span class="brand-mark">PS</span>
@@ -44,14 +53,14 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
         </span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href={basePath}>Home</a>
-        <a href={sitePath("posts/")}>Posts</a>
+        <a href={basePath} aria-current={isHome ? "page" : undefined}>Home</a>
+        <a href={postsPath} aria-current={isPosts ? "page" : undefined}>Posts</a>
         <a href={sitePath("rss.xml")}>RSS</a>
-        <a href={SITE.repo}>Source</a>
+        <a href={SITE.repo} rel="noopener noreferrer">Source</a>
       </nav>
     </header>
 
-    <main>
+    <main id="main">
       <slot />
     </main>
 
@@ -60,7 +69,7 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
       <div class="footer-links">
         <a href={sitePath("rss.xml")}>RSS</a>
         <a href={sitePath("sitemap.xml")}>Sitemap</a>
-        <a href={SITE.repo}>Source</a>
+        <a href={SITE.repo} rel="noopener noreferrer">Source</a>
       </div>
     </footer>
   </body>
@@ -142,6 +151,26 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
     border-radius: 6px;
   }
 
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    z-index: 100;
+    transform: translateY(-160%);
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 160ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
   img {
     display: block;
     max-width: 100%;
@@ -216,6 +245,10 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
 
   nav a {
     text-decoration: none;
+  }
+
+  nav a[aria-current="page"] {
+    color: var(--accent);
   }
 
   .site-footer {
@@ -414,6 +447,23 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
 
     .brand {
       font-size: 0.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .button,
+    .post-card,
+    .skip-link {
+      transition: none;
+    }
+
+    .button:hover,
+    .post-card:hover {
+      transform: none;
     }
   }
 </style>
