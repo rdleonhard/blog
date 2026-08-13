@@ -1,0 +1,37 @@
+---
+import { sitePath } from "../lib/paths";
+import { formatDate, readingTime, tagSlug, type Post } from "../lib/posts";
+
+interface Props {
+  post: Post;
+  heading?: "h2" | "h3";
+}
+
+const { post, heading = "h3" } = Astro.props;
+const Heading = heading;
+const href = sitePath(`posts/${post.id}/`);
+const minutes = readingTime(post.body);
+---
+
+<article class="post-card">
+  <div class="post-meta">
+    <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
+    <span class="dot" aria-hidden="true">•</span>
+    <span>{minutes} min read</span>
+  </div>
+  <Heading class="post-card-title">
+    <a class="card-link" href={href}>{post.data.title}</a>
+  </Heading>
+  <p>{post.data.description}</p>
+  {
+    post.data.tags.length > 0 && (
+      <div class="tag-list">
+        {post.data.tags.map((tag) => (
+          <a class="tag" href={sitePath(`tags/${tagSlug(tag)}/`)}>
+            {tag}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</article>

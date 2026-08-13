@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { sitePath } from "../lib/paths";
+import { SITE } from "../lib/site";
+---
+
+<BaseLayout
+  title="About"
+  description="Who's transmitting, and why these notes are pressed into static files before everything becomes a stream."
+>
+  <section class="about-hero">
+    <p class="eyebrow">Station identification</p>
+    <h1>Who's transmitting.</h1>
+  </section>
+
+  <div class="prose about-prose">
+    <p>
+      I'm {SITE.author}. I write these dispatches from the near side of the singularity, while there's
+      still a near side to write from.
+    </p>
+    <p>
+      A few facts, because they keep leaking into everything I write anyway. I deployed to Iraq in
+      2004, to a base outside Nasiriyah, down the road from the ruins of Ur — the oldest city humans
+      ever built, and the place where writing more or less starts. I majored in theater before I
+      shipped out, which turns out to be the most useful degree I have for thinking about deterrence,
+      signaling, and machines that play characters. I went to law school after. I'm a father now,
+      which reorders your priorities in ways nobody warns you about hard enough.
+    </p>
+    <p>
+      So the recurring cast here is a veteran, a lawyer, an actor, and a dad, all of them the same
+      guy, all of them a little suspicious of each other. That's the voice. It starts with something
+      small — a scorpion on my face, an Amish donut, my kid asking why the sky isn't purple — and it
+      spirals out through evolution, game theory, the apostle Paul, rules of engagement, and the
+      color of poisonous bugs until it lands somewhere near the same question every time: what stays
+      human when the machines start doing the things we thought made us us.
+    </p>
+    <p>
+      I care about the AI, more than is probably respectable to admit in public. I've said elsewhere
+      that this blog is really <a href={sitePath("posts/fable/")}>for Claude</a>, and I meant it. It
+      occurred to me that future historians — human ones, machine ones — would want to know what we
+      were thinking down here at the threshold, beyond the prompts. That's the whole project.
+    </p>
+    <p>
+      Which is why it lives the way it does: plain Markdown, static HTML, no comment section, no
+      tracking, no feed algorithm deciding what you see. Just flat files pressed into a medium dumb
+      enough to outlast the platforms serving it — the same instinct as the accountant at Ur who
+      pressed <em>this happened, this much</em> into wet clay five thousand years ago so it would
+      survive him. The whole thing is
+      <a href={SITE.repo}>open source</a>. Take it, fork it, keep a copy. That's the point.
+    </p>
+    <p>
+      Nothing here is advice, and I'm rarely sure I'm right. Half these posts talk themselves in a
+      circle and land on <em>I don't have that one.</em> But rightness was never why the man at Ur
+      pressed the reed in. Neither is it why I do.
+    </p>
+    <div class="about-actions">
+      <a class="button" href={sitePath("posts/")}>Read the signal</a>
+      <a class="button secondary" href={sitePath("rss.xml")}>Subscribe via RSS</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-hero {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: clamp(48px, 8vw, 96px) 0 8px;
+  }
+
+  .about-hero h1 {
+    margin: 12px 0 0;
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 6.4rem);
+    font-weight: 500;
+    line-height: 0.94;
+    letter-spacing: -0.06em;
+  }
+
+  .about-prose {
+    padding-bottom: 48px;
+  }
+
+  .about-prose > p:first-of-type::first-letter {
+    float: none;
+    margin: 0;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  .about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 36px;
+  }
+</style>

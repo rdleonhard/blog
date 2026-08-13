@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { sitePath } from "../lib/paths";
+---
+
+<BaseLayout title="Signal lost" description="This transmission could not be located.">
+  <section class="lost">
+    <p class="eyebrow">Signal lost</p>
+    <h1>404</h1>
+    <p class="lost-copy">
+      Nothing is transmitting on this frequency. The page drifted off, was never pressed into clay, or
+      became a stream and washed away.
+    </p>
+    <div class="lost-actions">
+      <a class="button" href={sitePath("")}>Return to base</a>
+      <a class="button secondary" href={sitePath("posts/")}>Open the archive</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lost {
+    display: grid;
+    place-content: center;
+    gap: 6px;
+    min-height: 62vh;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .lost h1 {
+    margin: 6px 0 10px;
+    font-family: var(--mono);
+    font-size: clamp(5rem, 20vw, 12rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    text-shadow:
+      0 0 40px rgba(125, 249, 255, 0.35),
+      2px 0 var(--accent-dark),
+      -2px 0 rgba(125, 249, 255, 0.5);
+  }
+
+  .lost-copy {
+    margin: 0 auto 30px;
+    max-width: 460px;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  .lost-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+</style>

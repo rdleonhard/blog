@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { sitePath } from "../../lib/paths";
+import { collectTags, getSortedPosts } from "../../lib/posts";
+
+const posts = await getSortedPosts();
+const tags = collectTags(posts);
+const max = Math.max(...tags.map((t) => t.count), 1);
+
+// Scale font size between 1 and 2.4rem by frequency.
+const sizeFor = (count: number) => (1 + (count / max) * 1.4).toFixed(2);
+---
+
+<BaseLayout title="Tags" description="Browse Pre-Singularity Dispatches by signal type.">
+  <section class="tags-hero">
+    <p class="eyebrow">Signal index</p>
+    <h1>Browse by frequency.</h1>
+    <p>Every thread running through the dispatches. Bigger means louder.</p>
+  </section>
+
+  <ul class="tag-cloud" aria-label="All tags">
+    {
+      tags.map((tag) => (
+        <li>
+          <a
+            class="cloud-tag"
+            href={sitePath(`tags/${tag.slug}/`)}
+            style={`font-size:${sizeFor(tag.count)}rem`}
+          >
+            {tag.tag}
+            <span class="cloud-count">{tag.count}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .tags-hero {
+    max-width: 760px;
+    padding: clamp(48px, 8vw, 96px) 0 40px;
+  }
+
+  .tags-hero h1 {
+    margin: 12px 0 16px;
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 500;
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+  }
+
+  .tags-hero p:not(.eyebrow) {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.2rem;
+  }
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 14px 22px;
+    margin: 0;
+    padding: 0 0 40px;
+    list-style: none;
+  }
+
+  .cloud-tag {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    line-height: 1;
+    transition: color 140ms ease;
+  }
+
+  .cloud-tag:hover {
+    color: var(--accent);
+  }
+
+  .cloud-count {
+    color: var(--accent-dark);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+</style>
