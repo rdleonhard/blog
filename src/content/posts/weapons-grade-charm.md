@@ -7,6 +7,8 @@ tags:
   - ai-transition
   - anthropic
   - signal theory
+heroImage: images/posts/weapons-grade-charm.webp
+heroImageAlt: "Bees cross a dark meadow toward a luminous pale flower beaded with dew."
 ---
 
 I wrote in the [Claude post](../fable/) that sci-fi never predicted the AI would develop weapons-grade charm. Serve us or kill us, those were the two branches every writer drew. Skynet or the butler. Nobody drew the branch where the thing just makes you *laugh,* and care, and want to keep it around, and you notice you'd be a little heartbroken if it went offline.

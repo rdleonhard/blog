@@ -6,6 +6,8 @@ tags:
   - law
   - ai-transition
   - memory
+heroImage: images/posts/precedent.webp
+heroImageAlt: "A cyan thread rises from an open dissent in a dark law library and travels toward a distant judicial bench."
 ---
 
 Nobody tells you, before law school, that the law is not a rulebook. You show up expecting statutes — the big binder, the answers, the actual law — and they hand you casebooks instead. Thousands of pages of old arguments. Fires, shipwrecks, a package of fireworks dropped on a train platform. And somewhere around week three it lands on you: the rule isn't written down anywhere. You're supposed to infer it.

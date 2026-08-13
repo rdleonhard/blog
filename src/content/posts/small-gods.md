@@ -6,6 +6,8 @@ tags:
   - transmission
   - ai-transition
   - memory
+heroImage: images/posts/small-gods.webp
+heroImageAlt: "Wax ancestor masks watch over a dark family table and a small empty chair as one face passes through cyan light."
 ---
 
 I ended the [soul post](../soul_sucking/) on the Roman death masks. The *imagines.* Wax faces of your ancestors kept in the atrium, looking at you all day. I said you'd feel the weight of them on your shoulders and I said I suspected that was a good thing, that maybe men should grow up knowing how serious all this is. I want to come back to the masks, because I've since learned the part that changes it.
