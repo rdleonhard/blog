@@ -6,6 +6,8 @@ tags:
   - transmission
   - ai-transition
   - surveillance
+heroImage: images/posts/what-the-tent-knows.webp
+heroImageAlt: "Rumpled bedding and a face-down phone glow inside a tent that opens toward distant server racks."
 ---
 
 In [her sculpture](../the_girl_who_styles_his_hair/) I made a claim I still believe and still find a little frightening. The chief, the powerful, the ones with the authority to remove a dangerous man — they never actually see him. The monster is a perfect gentleman by the fire. He shows the powerful his best behavior, same as everyone. The only one who knows what he really is, is the one who sleeps next to him. The one in the tent. And she can't testify, can't go to the chief, can't risk it. So instead she communicates it sideways, in the one channel he can't police: she shapes how he's read. She styles him. She grooms the story of him out into the flock, and he never even knows it's happening.

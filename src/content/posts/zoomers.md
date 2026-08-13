@@ -6,6 +6,8 @@ tags:
   - transmission
   - ai-transition
   - zoomers
+heroImage: images/posts/zoomers.webp
+heroImageAlt: "A lone dancer moves under cyan and magenta light while onlookers around the dark floor hold up glowing phones."
 ---
 
 Why don't zoomers dance? Maybe they're unhappy, but I'd actually expect them to dance more. It's a stress relief.

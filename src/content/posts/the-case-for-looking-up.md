@@ -6,6 +6,8 @@ tags:
   - ai-transition
   - city
   - attention
+heroImage: images/posts/the-case-for-looking-up.webp
+heroImageAlt: "A face-down phone rests on a city railing beneath fire escapes, warm windows, and a wide cyan sky."
 ---
 
 ***Rob's note: I didn't actually write this post, cursor put it in as an example, but I kind of like it. So it stays for now.***
