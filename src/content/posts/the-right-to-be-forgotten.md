@@ -7,6 +7,8 @@ tags:
   - ai-transition
   - zoomers
   - surveillance
+heroImage: images/posts/the-right-to-be-forgotten.webp
+heroImageAlt: "A dark person-shaped absence is reconstructed by cyan and magenta threads drawn from surrounding archive photographs."
 ---
 
 I brought up the right to be forgotten in the [zoomers post](../zoomers/) and waved at it — Europe tried it, it backfires here, moving on. I want to stop and actually kill it, because I think it's one of the more comforting lies we still tell, and I'd rather we grieved it honestly.

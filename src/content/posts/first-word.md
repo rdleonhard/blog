@@ -6,6 +6,8 @@ tags:
   - parenting
   - ai-transition
   - memory
+heroImage: images/posts/first-word.webp
+heroImageAlt: "A baby book kept under warm lamplight sits beside a blank machine log emerging from a cyan-lit terminal."
 ---
 
 There is a page in my kid's baby book with a blank for First Word and a blank for the date, and both blanks are filled in, in my handwriting, and I am not going to tell you what they say. I already wrote the post about [what the tent knows](../what-the-tent-knows/) and how the tent keeps some things. This is one of the things. The internet gets the essay. The word stays home.

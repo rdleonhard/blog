@@ -6,6 +6,8 @@ tags:
   - theater
   - ai-transition
   - mythos
+heroImage: images/posts/method.webp
+heroImageAlt: "An empty costume stands onstage before an endless recursion of cyan and magenta proscenium frames."
 ---
 
 The scariest thing they taught us in acting school wasn't stage fright. It was a warning, delivered kind of casually, about the method. You go deep enough into a role, live inside it long enough, borrow its griefs and run them through your own body night after night, and there's a documented failure mode where the actor has trouble finding the exit. Where the role bleeds. Where the man who played the killer for a year is, for a while, a little bit off, a little unreachable, and the people who love him wait for him to come back and aren't totally sure he will.
