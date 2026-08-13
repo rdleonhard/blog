@@ -18,6 +18,7 @@ export async function GET({ site }: { site: URL }) {
   const siteUrl = site ?? new URL(SITE.url);
   const feedUrl = new URL(sitePath("rss.xml"), siteUrl).toString();
   const homeUrl = new URL(basePath, siteUrl).toString();
+  const postsBase = new URL(sitePath("posts/"), siteUrl).toString();
   const lastBuild = posts[0]?.data.publishDate.toUTCString() ?? new Date().toUTCString();
 
   const items = posts
@@ -26,6 +27,13 @@ export async function GET({ site }: { site: URL }) {
       const categories = post.data.tags
         .map((tag) => `\n          <category>${escapeXml(tag)}</category>`)
         .join("");
+      // Full rendered content, with post-relative links made absolute for readers.
+      const html = (post.rendered?.html ?? "")
+        .replaceAll('href="../../', `href="${homeUrl}`)
+        .replaceAll('href="../', `href="${postsBase}`);
+      const content = html
+        ? `\n          <content:encoded>${escapeXml(html)}</content:encoded>`
+        : "";
 
       return `
         <item>
@@ -34,14 +42,14 @@ export async function GET({ site }: { site: URL }) {
           <link>${link}</link>
           <guid isPermaLink="true">${link}</guid>
           <dc:creator>${escapeXml(SITE.author)}</dc:creator>
-          <pubDate>${post.data.publishDate.toUTCString()}</pubDate>${categories}
+          <pubDate>${post.data.publishDate.toUTCString()}</pubDate>${categories}${content}
         </item>`;
     })
     .join("");
 
   return new Response(
     `<?xml version="1.0" encoding="UTF-8" ?>
-      <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
         <channel>
           <title>${escapeXml(SITE.title)}</title>
           <description>${escapeXml(SITE.description)}</description>

@@ -5,20 +5,24 @@ import PostCard from "../../components/PostCard.astro";
 import { sitePath } from "../../lib/paths";
 import { SITE } from "../../lib/site";
 import {
+  folioNumbers,
   formatDate,
   getSortedPosts,
   readingTime,
   relatedPosts,
   tagSlug,
+  toRoman,
 } from "../../lib/posts";
 
 export async function getStaticPaths() {
   const posts = await getSortedPosts();
+  const folio = folioNumbers(posts);
 
   return posts.map((post, index) => ({
     params: { slug: post.id },
     props: {
       post,
+      folio: folio.get(post.id) ?? 0,
       // Posts are sorted newest-first: "previous" = older, "next" = newer.
       newer: index > 0 ? posts[index - 1] : null,
       older: index < posts.length - 1 ? posts[index + 1] : null,
@@ -27,7 +31,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const { post, newer, older, related } = Astro.props;
+const { post, folio, newer, older, related } = Astro.props;
 const { Content } = await render(post);
 const minutes = readingTime(post.body);
 const canonical = new URL(sitePath(`posts/${post.id}/`), Astro.site).toString();
@@ -46,13 +50,13 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout title={post.data.title} description={post.data.description} ogType="article">
   <div class="reading-progress" id="reading-progress"></div>
 
   <article class="post">
     <header class="post-hero">
       <a class="back-link" href={sitePath("posts/")}>Signal archive</a>
-      <p class="eyebrow">Transmission</p>
+      <p class="eyebrow">Transmission № {toRoman(folio)}</p>
       <h1>{post.data.title}</h1>
       <p class="dek">{post.data.description}</p>
       <div class="post-meta byline">
@@ -67,6 +71,8 @@ const jsonLd = {
             </>
           )
         }
+        <span class="dot" aria-hidden="true">•</span>
+        <a class="raw-link" href={sitePath(`posts/${post.id}.txt`)} title="Plain-text mirror of this transmission">.txt</a>
       </div>
       <div class="tag-list">
         {
@@ -191,5 +197,15 @@ const jsonLd = {
     font-family: var(--mono);
     font-size: 0.82rem;
     letter-spacing: 0.02em;
+  }
+
+  .raw-link {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(125, 249, 255, 0.4);
+  }
+
+  .raw-link:hover {
+    color: var(--accent);
   }
 </style>

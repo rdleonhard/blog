@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "node scripts/check-links.mjs && astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:links": "node scripts/check-links.mjs",
     "new:post": "node scripts/new-post.mjs"
   },
   "dependencies": {

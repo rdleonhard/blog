@@ -65,7 +65,24 @@ ready to publish.
 This site is configured for the `rdleonhard/blog` repository and deploys under the `/blog` base
 path. In GitHub, set Pages to use **GitHub Actions** as the source.
 
-The site also publishes `rss.xml`, `sitemap.xml`, and `robots.txt` for feed readers and crawlers.
+The site also publishes `rss.xml` (full content), `feed.json`, `sitemap.xml`, and `robots.txt` for
+feed readers and crawlers.
+
+## The Codex
+
+The archive is bound into a codex — six thematic books with a curated reading order — served at
+`/codex/`. Supporting pieces:
+
+- `/glossary/` — the blog's vernacular, defined in-voice.
+- `/codex.txt` — the entire archive as one plain-text file.
+- `/codex.json` — a machine-readable manifest (titles, dates, tags, word counts, URLs).
+- `/llms.txt` — a guide addressed to language-model readers.
+- `/posts/<slug>.txt` — a plain-text mirror of every transmission.
+- Print stylesheet — post pages print as clean black-on-white text.
+
+The codex canon lives in `src/data/codex.ts`; the build fails if it references a missing post or
+omits a published one. `npm run check:links` (run automatically before every build) validates that
+in-post links resolve and never point forward in time.
 
 ### Deployment Setup
 

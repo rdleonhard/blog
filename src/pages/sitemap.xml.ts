@@ -27,6 +27,8 @@ export async function GET({ site }: { site: URL }) {
   const entries: Entry[] = [
     { path: basePath, lastmod: newest },
     { path: `${basePath}posts/`, lastmod: newest },
+    { path: `${basePath}codex/`, lastmod: newest },
+    { path: `${basePath}glossary/`, lastmod: newest },
     { path: `${basePath}tags/`, lastmod: newest },
     { path: `${basePath}about/` },
     ...posts.map((post) => ({

@@ -5,11 +5,13 @@ import { basePath, sitePath } from "../lib/paths";
 interface Props {
   title?: string;
   description?: string;
+  ogType?: "website" | "article";
 }
 
 const {
   title = SITE.title,
   description = SITE.description,
+  ogType = "website",
 } = Astro.props;
 
 const pageTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
@@ -27,10 +29,16 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
     <meta name="theme-color" content="#070812" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="application/rss+xml" title={`${SITE.title} RSS`} href={rssUrl} />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title={`${SITE.title} JSON Feed`}
+      href={new URL(sitePath("feed.json"), Astro.site)}
+    />
     <title>{pageTitle}</title>
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:url" content={canonicalUrl} />
     <meta name="twitter:card" content="summary_large_image" />
@@ -59,6 +67,7 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
         </span>
       </a>
       <nav aria-label="Primary navigation">
+        <a href={sitePath("codex/")}>Codex</a>
         <a href={sitePath("posts/")}>Posts</a>
         <a href={sitePath("tags/")}>Tags</a>
         <a href={sitePath("about/")}>About</a>
@@ -74,6 +83,9 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
     <footer class="site-footer">
       <p>{SITE.signal} Written by {SITE.author} and published as static files before everything becomes a stream.</p>
       <div class="footer-links">
+        <a href={sitePath("codex/")}>Codex</a>
+        <a href={sitePath("glossary/")}>Glossary</a>
+        <a href={sitePath("codex.txt")}>Codex.txt</a>
         <a href={sitePath("rss.xml")}>RSS</a>
         <a href={sitePath("sitemap.xml")}>Sitemap</a>
         <a href={SITE.repo}>Source</a>
@@ -616,11 +628,101 @@ const rssUrl = new URL(sitePath("rss.xml"), Astro.site);
 
     nav {
       width: 100%;
+      flex-wrap: wrap;
       justify-content: space-between;
+      row-gap: 8px;
     }
 
     .brand {
       font-size: 0.75rem;
+    }
+  }
+
+  /* A codex should print. Black serif on white, chrome stripped, links legible. */
+  @media print {
+    :root {
+      color-scheme: light;
+    }
+
+    html,
+    body {
+      background: #fff !important;
+      color: #000;
+    }
+
+    body::before {
+      display: none;
+    }
+
+    .site-header nav,
+    .site-footer,
+    .reading-progress,
+    .post-nav,
+    .related,
+    .hero-actions,
+    .tag-filter,
+    .button {
+      display: none !important;
+    }
+
+    .brand,
+    .brand-copy span,
+    .eyebrow,
+    .post-meta,
+    .tag-list,
+    .tag,
+    p,
+    li,
+    blockquote {
+      color: #000 !important;
+      text-shadow: none !important;
+      box-shadow: none !important;
+    }
+
+    .brand-mark {
+      border-color: #000;
+      box-shadow: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    .post-card :where(h2, h3),
+    .post-card-title,
+    .prose :where(h2, h3) {
+      color: #000 !important;
+    }
+
+    .post-card,
+    .hero-panel,
+    .glossary-entry {
+      border: 1px solid #999 !important;
+      background: #fff !important;
+      box-shadow: none !important;
+    }
+
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .prose {
+      font-size: 12pt;
+      color: #000;
+    }
+
+    .prose > p:first-of-type::first-letter {
+      color: #000;
+    }
+
+    .prose a::after {
+      content: " (" attr(href) ")";
+      font-size: 0.75em;
+      color: #444;
+    }
+
+    @page {
+      margin: 2cm;
     }
   }
 </style>

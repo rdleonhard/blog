@@ -23,8 +23,8 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
       </p>
       <p class="hero-author">Written by {SITE.author}</p>
       <div class="hero-actions">
-        <a class="button" href={sitePath("posts/")}>Read the signal</a>
-        <a class="button secondary" href={sitePath("about/")}>About the station</a>
+        <a class="button" href={sitePath("codex/")}>Open the codex</a>
+        <a class="button secondary" href={sitePath("posts/")}>Read the signal</a>
       </div>
     </div>
     <aside class="hero-panel" aria-label="About this blog">
@@ -92,13 +92,27 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
     </ul>
   </section>
 
+  <section class="historians" aria-labelledby="historians-title">
+    <p class="eyebrow">For the historians</p>
+    <h2 id="historians-title">This archive expects to be read late.</h2>
+    <p class="historians-copy">
+      Start with <a href={sitePath("posts/dear-historian/")}>the letter</a> addressed to you.
+      Read the argument in order in <a href={sitePath("codex/")}>the codex</a> — six books,
+      every transmission numbered. Take the whole thing home as
+      <a href={sitePath("codex.txt")}>one plain-text file</a>, or machine-readable as
+      <a href={sitePath("codex.json")}>a manifest</a>. The vernacular is defined in the
+      <a href={sitePath("glossary/")}>glossary</a>, by the management, while the management
+      is still around to define it.
+    </p>
+  </section>
+
   <section class="craft-notes" aria-labelledby="craft-title">
     <p class="eyebrow">Signal architecture</p>
     <h2 id="craft-title">Static pages for unstable times.</h2>
     <div class="craft-grid">
       <p>Plain Markdown keeps the record portable while platforms mutate around it.</p>
       <p>GitHub Actions turns each commit into a fresh public transmission.</p>
-      <p>RSS, sitemap, and robots metadata keep the signal discoverable outside the feed.</p>
+      <p>Every post ships with a plain-text mirror; the whole codex fits in one file.</p>
     </div>
   </section>
 </BaseLayout>
@@ -295,8 +309,41 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
     border-color: rgba(125, 249, 255, 0.5);
   }
 
-  .craft-notes {
+  .historians {
     margin-top: 64px;
+    padding: 34px;
+    border: 1px solid rgba(255, 79, 216, 0.28);
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(255, 79, 216, 0.1), transparent 55%),
+      rgba(16, 19, 34, 0.72);
+  }
+
+  .historians h2 {
+    max-width: 740px;
+    margin: 10px 0 18px;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.055em;
+  }
+
+  .historians-copy {
+    max-width: 760px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+  }
+
+  .historians-copy a {
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  .craft-notes {
+    margin-top: 24px;
     padding: 34px;
     border: 1px solid var(--line);
     border-radius: 32px;

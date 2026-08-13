@@ -1,0 +1,290 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { sitePath } from "../../lib/paths";
+import { CODEX } from "../../data/codex";
+import {
+  folioNumbers,
+  formatDate,
+  getSortedPosts,
+  readingTime,
+  toRoman,
+  type Post,
+} from "../../lib/posts";
+
+const posts = await getSortedPosts();
+const byId = new Map(posts.map((post) => [post.id, post]));
+const folio = folioNumbers(posts);
+
+// The canon must account for every published post, and reference only real ones.
+const canonIds = new Set(CODEX.flatMap((book) => book.posts));
+for (const id of canonIds) {
+  if (!byId.has(id)) throw new Error(`Codex references unknown post: ${id}`);
+}
+for (const post of posts) {
+  if (!canonIds.has(post.id)) throw new Error(`Post missing from codex: ${post.id}`);
+}
+
+const books = CODEX.map((book) => ({
+  ...book,
+  entries: book.posts.map((id) => byId.get(id) as Post),
+}));
+
+const totalMinutes = posts.reduce((sum, post) => sum + readingTime(post.body), 0);
+---
+
+<BaseLayout
+  title="The Codex"
+  description="The full archive bound into six books, ordered by argument instead of arrival."
+>
+  <section class="codex-hero">
+    <p class="eyebrow">The codex</p>
+    <h1>Bound, not scrolled.</h1>
+    <p class="codex-dek">
+      Every transmission, sewn into six books and ordered by argument instead of arrival. The
+      chronological record lives in the <a href={sitePath("posts/")}>archive</a>; this is the
+      reading order. {posts.length} transmissions, about {totalMinutes} minutes cover to cover.
+    </p>
+    <blockquote class="codex-epigraph">
+      <p>“Remember it after I forget.”</p>
+      <cite>— Transmission № {toRoman(folio.get("ur") ?? 0)}, <a href={sitePath("posts/ur/")}>Ur</a></cite>
+    </blockquote>
+  </section>
+
+  <div class="books">
+    {
+      books.map((book) => (
+        <section class="book" aria-labelledby={`book-${book.numeral}`}>
+          <header class="book-head">
+            <span class="book-numeral" aria-hidden="true">{book.numeral}</span>
+            <div>
+              <h2 id={`book-${book.numeral}`}>Book {book.numeral} — {book.title}</h2>
+              <p class="book-intro">{book.intro}</p>
+            </div>
+          </header>
+          <ol class="book-list">
+            {book.entries.map((post) => (
+              <li>
+                <a class="book-entry" href={sitePath(`posts/${post.id}/`)}>
+                  <span class="entry-folio">№ {toRoman(folio.get(post.id) ?? 0)}</span>
+                  <span class="entry-body">
+                    <span class="entry-title">{post.data.title}</span>
+                    <span class="entry-argument">{post.data.description}</span>
+                  </span>
+                  <span class="entry-meta">
+                    <time datetime={post.data.publishDate.toISOString()}>
+                      {formatDate(post.data.publishDate)}
+                    </time>
+                    <span>{readingTime(post.body)} min</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="codex-formats" aria-labelledby="formats-title">
+    <p class="eyebrow" id="formats-title">Keep a copy</p>
+    <p>
+      The codex expects to outlive its hosting. Take the whole archive as
+      <a href={sitePath("codex.txt")}>one plain-text file</a>, a
+      <a href={sitePath("codex.json")}>machine-readable manifest</a>, or per-post
+      plain-text mirrors linked from every transmission. There is a
+      <a href={sitePath("glossary/")}>glossary</a> for the vernacular, and
+      <a href={sitePath("posts/dear-historian/")}>a letter</a> for whoever finds this late.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .codex-hero {
+    max-width: 860px;
+    padding: clamp(48px, 8vw, 96px) 0 24px;
+  }
+
+  .codex-hero h1 {
+    margin: 12px 0 18px;
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 6.4rem);
+    font-weight: 500;
+    line-height: 0.94;
+    letter-spacing: -0.06em;
+  }
+
+  .codex-dek {
+    max-width: 700px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.2rem;
+  }
+
+  .codex-dek a {
+    color: var(--accent);
+  }
+
+  .codex-epigraph {
+    margin: 36px 0 0;
+    padding-left: 1.4rem;
+    border-left: 3px solid var(--accent-dark);
+  }
+
+  .codex-epigraph p {
+    margin: 0 0 6px;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-style: italic;
+  }
+
+  .codex-epigraph cite {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-style: normal;
+    letter-spacing: 0.04em;
+  }
+
+  .books {
+    display: grid;
+    gap: 56px;
+    padding: 48px 0 24px;
+  }
+
+  .book-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    margin-bottom: 22px;
+  }
+
+  .book-numeral {
+    flex: none;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 500;
+    line-height: 0.9;
+    text-shadow: 0 0 32px rgba(125, 249, 255, 0.35);
+  }
+
+  .book-head h2 {
+    margin: 0 0 10px;
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .book-intro {
+    max-width: 640px;
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .book-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .book-entry {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: baseline;
+    padding: 18px 22px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(16, 19, 34, 0.6);
+    text-decoration: none;
+    transition:
+      transform 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .book-entry:hover {
+    transform: translateX(4px);
+    border-color: rgba(125, 249, 255, 0.48);
+  }
+
+  .entry-folio {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .entry-body {
+    display: grid;
+    gap: 4px;
+  }
+
+  .entry-title {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .book-entry:hover .entry-title {
+    color: var(--accent);
+  }
+
+  .entry-argument {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .entry-meta {
+    display: grid;
+    gap: 2px;
+    justify-items: end;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .codex-formats {
+    margin: 48px 0 40px;
+    padding: 30px 34px;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: rgba(16, 19, 34, 0.72);
+  }
+
+  .codex-formats p:last-child {
+    max-width: 760px;
+    margin: 10px 0 0;
+    color: var(--muted);
+  }
+
+  .codex-formats a {
+    color: var(--accent);
+  }
+
+  @media (max-width: 720px) {
+    .book-entry {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .entry-meta {
+      justify-items: start;
+      grid-auto-flow: column;
+      gap: 12px;
+    }
+
+    .book-head {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>
