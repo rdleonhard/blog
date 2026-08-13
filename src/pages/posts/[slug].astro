@@ -35,6 +35,9 @@ const { post, folio, newer, older, related } = Astro.props;
 const { Content } = await render(post);
 const minutes = readingTime(post.body);
 const canonical = new URL(sitePath(`posts/${post.id}/`), Astro.site).toString();
+const heroImageUrl = post.data.heroImage
+  ? new URL(sitePath(post.data.heroImage), Astro.site).toString()
+  : undefined;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -47,10 +50,17 @@ const jsonLd = {
   keywords: post.data.tags.join(", "),
   url: canonical,
   mainEntityOfPage: canonical,
+  ...(heroImageUrl && { image: heroImageUrl }),
 };
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} ogType="article">
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  image={post.data.heroImage}
+  imageAlt={post.data.heroImageAlt}
+>
   <div class="reading-progress" id="reading-progress"></div>
 
   <article class="post">
@@ -84,6 +94,21 @@ const jsonLd = {
         }
       </div>
     </header>
+
+    {
+      post.data.heroImage && (
+        <figure class="post-art">
+          <img
+            src={sitePath(post.data.heroImage)}
+            alt={post.data.heroImageAlt ?? `Illustration for ${post.data.title}`}
+            width="1672"
+            height="941"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+      )
+    }
 
     <div class="prose">
       <Content />
@@ -157,6 +182,32 @@ const jsonLd = {
     padding: clamp(48px, 8vw, 96px) 0 40px;
   }
 
+  .post-art {
+    position: relative;
+    max-width: 1040px;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto clamp(42px, 7vw, 72px);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 32px;
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow);
+  }
+
+  .post-art::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    box-shadow: inset 0 0 90px rgba(7, 8, 18, 0.32);
+  }
+
+  .post-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .back-link {
     display: inline-flex;
     margin-bottom: 32px;
@@ -207,5 +258,11 @@ const jsonLd = {
 
   .raw-link:hover {
     color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .post-art {
+      border-radius: 20px;
+    }
   }
 </style>

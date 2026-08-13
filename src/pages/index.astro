@@ -12,7 +12,10 @@ const topTags = collectTags(posts).slice(0, 10);
 const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
 ---
 
-<BaseLayout>
+<BaseLayout
+  image="images/site-future-archive.webp"
+  imageAlt="An open codex and an ancient clay tablet on a dark archival worktable lit in cyan and magenta."
+>
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow">Pre-singularity log</p>
@@ -28,6 +31,15 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
       </div>
     </div>
     <aside class="hero-panel" aria-label="About this blog">
+      <img
+        class="hero-panel-image"
+        src={sitePath("images/site-future-archive.webp")}
+        alt="An open codex and an ancient clay tablet on a dark archival worktable lit in cyan and magenta."
+        width="1672"
+        height="941"
+        fetchpriority="high"
+        decoding="async"
+      />
       <p class="eyebrow">Transmission</p>
       <p>
         It occurred to me that future historians, even AI historians, would like to know what we were
@@ -56,6 +68,20 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
           </div>
         </div>
         <a class="featured-open" href={sitePath(`posts/${featuredPost.id}/`)}>
+          {
+            featuredPost.data.heroImage && (
+              <span class="featured-media">
+                <img
+                  src={sitePath(featuredPost.data.heroImage)}
+                  alt={featuredPost.data.heroImageAlt ?? `Illustration for ${featuredPost.data.title}`}
+                  width="1672"
+                  height="941"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+            )
+          }
           <span class="read-link">Open transmission →</span>
         </a>
       </section>
@@ -162,6 +188,7 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
   }
 
   .hero-panel {
+    overflow: hidden;
     padding: 30px;
     border: 1px solid var(--line);
     border-radius: 32px;
@@ -169,6 +196,15 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
       linear-gradient(135deg, rgba(125, 249, 255, 0.1), rgba(255, 79, 216, 0.08)),
       rgba(16, 19, 34, 0.78);
     box-shadow: var(--shadow);
+  }
+
+  .hero-panel-image {
+    width: calc(100% + 60px);
+    max-width: none;
+    aspect-ratio: 16 / 9;
+    margin: -30px -30px 26px;
+    border-bottom: 1px solid var(--line);
+    object-fit: cover;
   }
 
   .hero-panel p:last-child {
@@ -225,9 +261,34 @@ const featuredMinutes = featuredPost ? readingTime(featuredPost.body) : 0;
   }
 
   .featured-open {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 100%;
+    gap: 14px;
     justify-self: end;
     align-self: end;
     text-decoration: none;
+  }
+
+  .featured-media {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--bg-elevated);
+  }
+
+  .featured-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 320ms ease;
+  }
+
+  .featured:hover .featured-media img {
+    transform: scale(1.025);
   }
 
   .read-link {

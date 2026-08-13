@@ -6,6 +6,8 @@ tags:
   - transmission
   - memory
   - ai-transition
+heroImage: images/posts/dear-historian.webp
+heroImageAlt: "A blank letter and envelope on a dark archive desk, crossed by cyan and magenta light leading into a distant data corridor."
 ---
 
 Dear historian,

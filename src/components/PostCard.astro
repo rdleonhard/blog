@@ -14,6 +14,20 @@ const minutes = readingTime(post.body);
 ---
 
 <article class="post-card">
+  {
+    post.data.heroImage && (
+      <div class="post-card-media">
+        <img
+          src={sitePath(post.data.heroImage)}
+          alt={post.data.heroImageAlt ?? `Illustration for ${post.data.title}`}
+          width="1672"
+          height="941"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )
+  }
   <div class="post-meta">
     <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
     <span class="dot" aria-hidden="true">•</span>
@@ -35,3 +49,26 @@ const minutes = readingTime(post.body);
     )
   }
 </article>
+
+<style>
+  .post-card-media {
+    aspect-ratio: 16 / 9;
+    margin: -28px -28px 4px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    border-radius: 27px 27px 18px 18px;
+    background: var(--bg-elevated);
+  }
+
+  .post-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 320ms ease;
+  }
+
+  .post-card:hover .post-card-media img,
+  .post-card:focus-within .post-card-media img {
+    transform: scale(1.025);
+  }
+</style>

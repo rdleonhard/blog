@@ -6,6 +6,8 @@ tags:
   - transmission
   - ai-transition
   - parenting
+heroImage: images/posts/the-oracle-in-the-kitchen.webp
+heroImageAlt: "A small child seen from behind sits with a bowl of yogurt beside a softly glowing voice assistant in a blue dawn kitchen."
 ---
 
 My kid asked Claude why the sky is blue, got the answer, and then asked the follow-up I have never once in my life thought to ask, which is *why isn't it purple, purple light bends more.* And the machine said, essentially, good catch, it's partly that our eyes are just built to see blue better, and my kid nodded like this was a normal Tuesday and went back to the yogurt.

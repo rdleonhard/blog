@@ -6,6 +6,8 @@ tags:
   - transmission
   - ai-transition
   - city
+heroImage: images/posts/ur.webp
+heroImageAlt: "From inside a field tent, a clay tablet, rugged laptop, and notebook face the distant Ziggurat of Ur at dawn."
 ---
 
 In the [soft boi post](../soft_boi_supremacy/) I mentioned, almost in passing, that my tent outside Nasiriyah was down the road from the ruins of Ur. One of the oldest cities humans ever built. I threw it in as scene-setting and kept moving. But I've thought about that road a lot since, and I think it's actually why this blog exists in the boring technical form it does, so let me pay it off.

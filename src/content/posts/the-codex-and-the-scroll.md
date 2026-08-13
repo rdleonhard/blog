@@ -6,6 +6,8 @@ tags:
   - transmission
   - memory
   - ai-transition
+heroImage: images/posts/the-codex-and-the-scroll.webp
+heroImageAlt: "An open hand-bound codex arrests a luminous paper scroll that winds endlessly into a dark cyan and magenta corridor."
 ---
 
 The scroll was the prestige technology. The library at Alexandria was scrolls, wall to wall, the accumulated mind of the Mediterranean rolled up in pigeonholes. If you were a serious text in the ancient world, you were a scroll. The codex — sheets stacked, folded, sewn through the spine — was field gear. Merchants' notebooks. Soldiers' wax tablets bound with a cord, the kind you could hold in one fist. The Romans called them *pugillares,* from the word for fist. Nobody wrote literature in one. It would be like publishing your novel in a spiral notebook from the PX.
