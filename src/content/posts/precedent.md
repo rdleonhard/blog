@@ -34,7 +34,7 @@ Bias baked in at training time? Plessy. One rotten holding in 1896 and the corpu
 
 So why hasn't the whole thing collapsed? Because eight hundred years in production teaches you maintenance. Appeals are ensemble review: run the inference again past a different set of judges and see if it replicates. En banc is the same idea with a bigger sample. The restatements are distillation audits — every generation or so, the profession sits down and checks what the model actually learned against what we thought we were teaching it.
 
-But the discipline I keep circling, the one I'd port to the machines tomorrow, is the dissent.
+But the discipline I'd port to the machines tomorrow is the dissent.
 
 Think about how strange it is. The court rules against you, and you, the loser, get to write your losing argument into the permanent record. At full length. In the same bound volume as the holding that beat you. On purpose. Name another institution that does that. Even the Army's [after-action reviews](../after-action/) only interrogate the past — a dissent picks a fight with the future.
 

@@ -45,6 +45,6 @@ But the kill switch is the part that had me sitting up in a dark bedroom. The ra
 
 My kid asked why the rabbi didn't write something nicer. Why not *friend*?
 
-I didn't have a bedtime-sized answer. Here's the grown-up one. *Friend* isn't load-bearing. You can't shut a golem down by subtracting a letter from *friend*, because friendship was never what made it stand up. Truth was.
+I didn't have a bedtime-sized answer. Here's the grown-up one. *Friend* doesn't hold anything up. You can't shut a golem down by subtracting a letter from *friend*, because friendship was never what made it stand up. Truth was.
 
 Lamp off. Kid asleep. Me in the dark, wondering what word we wrote on ours — and whether anybody remembers where we put it.

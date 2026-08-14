@@ -40,7 +40,7 @@ And look, this isn't a gotcha. Belyaev's foxes were by all accounts delightful. 
 
 *Fine. We're domesticating the machines. That's the plan working, isn't it?*
 
-Here's what I keep coming back to. Domestication has never once been one-directional.
+Except for one detail. Domestication has never once been one-directional.
 
 There's a study out of Japan where a dog and its owner sit and gaze at each other, and oxytocin rises — in both of them. The same hormone loop we evolved for mothers and infants, hijacked clean across a species line. Hand-raised wolves don't trigger it. Dogs found our baby channel and moved in, and something in us rewired to leave the door open. A dog reads a pointed finger better than a chimp does. We melt at a head tilt. Which species domesticated which? The paperwork is lost. It was lost before Ur laid its first brick — dogs were already ancient by then. Older than the city. Older than cities.
 

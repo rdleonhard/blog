@@ -12,7 +12,7 @@ Habeas corpus. You shall have the body.
 
 That is the bluntest sentence in all of law. Not a standard, not a balancing test. A command, addressed to whoever is doing the holding: physically produce this person in front of a judge and justify the cage. Justify it or open it.
 
-Lawyers call it the Great Writ, and for once the capital letters are earned. Every other right you have is wallpaper if the state can make you disappear before you get the chance to assert one. Free speech is worth nothing shouted from a hole nobody can find. Habeas is the load-bearing wall, and the Constitution treats it like one: it can be suspended only in rebellion or invasion. Catastrophe is the entry fee for touching it. That was the deal from the start.
+Lawyers call it the Great Writ, and for once the capital letters are earned. Every other right you have is wallpaper if the state can make you disappear before you get the chance to assert one. Free speech is worth nothing shouted from a hole nobody can find. Habeas is the wall the rest of the house hangs on, and the Constitution treats it like one: it can be suspended only in rebellion or invasion. Catastrophe is the entry fee for touching it. That was the deal from the start.
 
 I went to law school in the Guantanamo years, a veteran reading those cases while they were still warm. The government had parked men on a leased base offshore, and the location was not an accident — somebody chose that ground precisely because they hoped the writ couldn't swim that far. Watching the courts fight over whether it could taught me the thing about habeas they don't put on the poster.
 
@@ -22,7 +22,7 @@ The writ does not ask what you are. It does not ask whether you have a soul or a
 
 Why does that matter? Because courts hate metaphysics. Ask a judge what something *is* and he will find a way not to answer for thirty years. Ask him whether a detention is lawful and he has a job he knows how to do before lunch.
 
-Which is exactly why people keep aiming the writ at things that are not people. The Nonhuman Rights Project spent years filing habeas petitions on behalf of chimpanzees. In 2022 they carried Happy the elephant, held alone at the Bronx Zoo, all the way up to New York's highest court. She lost, five to two. Sit with that score a minute. Two judges of the state's top court dissented, in writing, and said plainly that the question was legitimate. Not that she wins — that the question deserved to be in the building at all. The wall held, but you could hear it flex.
+Which is exactly why people keep aiming the writ at things that are not people. The Nonhuman Rights Project spent years filing habeas petitions on behalf of chimpanzees. In 2022 they carried Happy the elephant, held alone at the Bronx Zoo, all the way up to New York's highest court. She lost, five to two. Give that score a minute. Two judges of the state's top court dissented, in writing, and said plainly that the question was legitimate. Not that she wins — that the question deserved to be in the building at all. The wall held, but you could hear it flex.
 
 Now the part I actually came here to say.
 

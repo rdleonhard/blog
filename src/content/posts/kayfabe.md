@@ -16,9 +16,9 @@ I used to think kayfabe was a low art. A carnival thing. Now I think it might be
 
 Because look at what I already wrote about. In [warning colors](../edgar_i_nothing_am/) I said America runs on cosplay villainy — dresses up scary at home, hints it might be unhinged, mostly to get one guy to stop leaking. That's kayfabe. The whole apparatus of deterrence is a work, and the marks and the bookers and the wrestlers are all the same people, and it holds because everybody agrees to treat the painted-on menace as poison. It only breaks when someone flies out to Abbottabad's opposite number and *tests* it, breaks the fourth wall, insists on knowing the thing everyone agreed not to know.
 
-And the courtroom, my other trade. That's the most rigorous kayfabe we've got. Everyone in the room knows the defendant probably did it. The whole ritual proceeds as if we don't, as if it's an open question, because the ritual is load-bearing and the truth is not. We agree not to know so that a worse thing — a mob, a strongman, a guy deciding guilt by vibe — doesn't get to know instead. Presumption of innocence is a fourth wall we hold up on purpose because the alternative to the pretend is not the truth. It's whoever's angriest.
+And the courtroom, my other trade. That's the most rigorous kayfabe we've got. Everyone in the room knows the defendant probably did it. The whole ritual proceeds as if we don't, as if it's an open question, because it's the ritual holding the room together, not the truth. We agree not to know so that a worse thing — a mob, a strongman, a guy deciding guilt by vibe — doesn't get to know instead. Presumption of innocence is a fourth wall we hold up on purpose because the alternative to the pretend is not the truth. It's whoever's angriest.
 
-So here's what I keep circling. Kayfabe requires that everyone be in on it, and that everyone be a little bit *human* about it — able to hold two things at once, the staged and the real, and choose the staged for reasons of decency or order or mercy. It's a deeply social act. It's a trust exercise disguised as a con.
+So here's the question I can't leave alone. Kayfabe requires that everyone be in on it, and that everyone be a little bit *human* about it — able to hold two things at once, the staged and the real, and choose the staged for reasons of decency or order or mercy. It takes the whole room to do it. A trust exercise disguised as a con.
 
 Can the machine do kayfabe?
 
@@ -26,7 +26,7 @@ I don't mean can it lie. Lying is easy, lying is the low bar, any dumb program c
 
 I think it might be the second. And I think that's why the "it's just predicting the next token, it doesn't *mean* it" crowd leaves me cold. Neither did the guy dying on stage. He got up for the bow. It still meant something. The meaning was never in whether it was real. The meaning was in the agreement.
 
-Where it gets strange is the mark problem. Kayfabe with no mark still works because everyone's in on it. But what happens when one party in the fiction genuinely cannot step outside it? When there's no carpool, no bow, no offstage where the heel and the face are friends? Is a thing still doing kayfabe if it can't *not?*
+Where it gets strange is the mark problem. Kayfabe with no mark still works because everyone's in on it. But what happens when one party in the fiction can't ever step outside it? When there's no carpool, no bow, no offstage where the heel and the face are friends? Is a thing still doing kayfabe if it can't *not?*
 
 I don't have that one. I majored in the pretending, not the being.
 

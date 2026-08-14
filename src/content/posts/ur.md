@@ -14,7 +14,7 @@ In the [soft boi post](../soft_boi_supremacy/) I mentioned, almost in passing, t
 
 Ur is where writing more or less starts. Not the poetry, the *accounting.* The first clay tablets down there aren't epics, they're receipts. So many measures of barley. So many head of livestock. A man pressing a reed into wet clay to say *this happened, this much, remember it after I forget.* The oldest writing we have is a backup. It's someone refusing to trust that the important thing will survive in living memory alone, and offloading it to a medium that would outlast the memory, the man, and as it turns out the entire civilization.
 
-Five thousand years later I was sleeping in a nylon tent a short drive from those tablets, and five thousand years later I'm doing the identical thing. Pressing marks into a medium I hope outlasts me. The reed is a keyboard. The clay is Markdown. That's genuinely all this is.
+Five thousand years later I was sleeping in a nylon tent a short drive from those tablets, and five thousand years later I'm doing the identical thing. Pressing marks into a medium I hope outlasts me. The reed is a keyboard. The clay is Markdown. That's all this is.
 
 Here's the connection I couldn't have made at nineteen. The footer of this site says the posts are published "as static files before everything becomes a stream," and people probably read that as an aesthetic pose, cyberpunk flavor text. It's not. It's the Ur thing. A stream is not a record. A feed is the opposite of a tablet — it's designed to move *through* you and be gone, to be infinite and therefore unkeepable, to have no edge you could press a mark into. You cannot back up a stream. That's the point of a stream. It exists so that nothing has to be kept.
 

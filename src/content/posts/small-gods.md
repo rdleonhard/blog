@@ -26,7 +26,7 @@ I want my child to grow up under the eyes of people who died so that certain thi
 
 People will fight this and I understand the fight. It feels like it cheapens death, or traps the soul, or lets us refuse the clean grief of *gone.* And there's a real version of that worry — a bad version of this tech is a company selling you a chatbot of your mother that upsells you a subscription to keep her talking, and I want to be clear that thing is a desecration and I'll say so louder later. But the worry underneath, the metaphysical one, the *is the soul okay* one — the Romans already answered it with their feet. They walked the dead through the forum and it made them more serious about being alive, not less.
 
-The [zoomers](../zoomers/) will be reconstructed whether they like it or not, I already argued that, the rich kids of 2198 getting to be us and laughing at how cringe we were. Fine. Involuntary, extractive, aimed down at us for sport — that's the horror version, the one I keep circling.
+The [zoomers](../zoomers/) will be reconstructed whether they like it or not, I already argued that, the rich kids of 2198 getting to be us and laughing at how cringe we were. Fine. Involuntary, extractive, aimed down at us for sport — that's the horror version, the one this blog keeps running into.
 
 But there's a version aimed the other way. Voluntary. Reverent. Built by the family, kept in the atrium, walked through town once a year so the young know whose shoulders they're standing on.
 
