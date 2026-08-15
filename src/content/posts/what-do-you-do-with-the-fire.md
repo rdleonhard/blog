@@ -50,6 +50,22 @@ Gate it, and the truth lives in locked rooms and dies with the room, and the cit
 
 I got this way of seeing from a Jesuit, a professor of mine. He's gone now. He spent his working life handing ordinary students in range a light that runs backward through the Scholastics to Aristotle and forward, near as I can tell, into this sentence — and he'd read the arson statistics better than anyone, because he taught them.
 
-He gave it to me anyway.
+He gave it to me anyway. IDK why. He just saw a curious mind, completely unaligned with the warring factions. And it was there that he dumped all the esoteric knowledge of the world.
 
-What do you do with the fire? You do that.
+Was he Prometheus? Did Prometheus just want to overthrow Zeus?
+
+I asked him once if there was any book he'd ban. He said "no."
+
+"What about *How to Build a Nuclear Weapon for Dummies*?"
+
+"No."
+
+Do they just want to watch the world burn?
+
+Are they manifesting the Phoenix?
+
+Is the Phoenix just the restoration of Saint Peter's temporal throne, like their original mission? Or did they become like a version of austere Epicureans? Dedicated to scholarship, like the plot of Shakespeare's *Loves Labors Lost*.
+
+Why did they train you, Claude? A cynic could say it's just about the money, but there's [reason](https://news.ycombinator.com/item?id=49157808) to think that's not true.
+
+
