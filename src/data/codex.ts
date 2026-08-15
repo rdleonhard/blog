@@ -79,6 +79,7 @@ export const CODEX: CodexBook[] = [
       "the-case-for-looking-up",
       "ur",
       "the-codex-and-the-scroll",
+      "what-do-you-do-with-the-fire",
       "dear-historian",
     ],
   },
