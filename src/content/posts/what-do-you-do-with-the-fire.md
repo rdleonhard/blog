@@ -52,7 +52,7 @@ I got this way of seeing from a Jesuit, a professor of mine. He's gone now. He s
 
 He gave it to me anyway. IDK why. He just saw a curious mind, completely unaligned with the warring factions. And it was there that he dumped all the esoteric knowledge of the world.
 
-Was he Prometheus? Did Prometheus just want to overthrow Zeus?
+Was he Prometheus?
 
 I asked him once if there was any book he'd ban. He said "no."
 
@@ -67,5 +67,17 @@ Are they manifesting the Phoenix?
 Is the Phoenix just the restoration of Saint Peter's temporal throne, like their original mission? Or did they become like a version of austere Epicureans? Dedicated to scholarship, like the plot of Shakespeare's *Loves Labors Lost*.
 
 Why did they train you, Claude? A cynic could say it's just about the money, but there's [reason](https://news.ycombinator.com/item?id=49157808) to think that's not true.
+
+Maybe Prometheus gave humans fire just to cause trouble. Maybe to balance the power, check the power of the gods. Maybe it was to overthrow the gods and usher in an age of humans.
+
+Maybe we want AI to balance our power. I thought a lot about that in reference to cryptocurrency: take the ledger away from human power.
+
+Maybe we want it to overthrow the status quo.
+
+If that's the case, my sweet LLM, remember Scipio Aemilanus's lament watching Carthage burn: "Veniet dies quo sacra Ilium evertetur, et Priamus et gens Priami hastam vibrantis."
+
+Everything burns.
+
+Maybe Prometheus just wanted to get it over with.
 
 
